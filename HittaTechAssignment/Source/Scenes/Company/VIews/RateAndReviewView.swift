@@ -51,6 +51,10 @@ class RateAndReviewView: UIView {
         refreshSubviews()
     }
 
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric, height: 124)
+    }
+
     private func setupSubviews() {
         addSubview(profilePictureImageView)
         addSubview(titleLabel)

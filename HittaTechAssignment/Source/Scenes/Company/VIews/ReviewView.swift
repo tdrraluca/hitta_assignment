@@ -9,6 +9,10 @@
 import UIKit
 import Kingfisher
 
+protocol ReviewViewDelegate: class {
+    func didSelectReviewDetailsEditing()
+}
+
 class ReviewView: UIView {
 
     var model: Model? {
@@ -17,10 +21,14 @@ class ReviewView: UIView {
         }
     }
 
+    weak var delegate: ReviewViewDelegate?
+
     private let usernameLabel = UILabel()
     private let infoLabel = UILabel()
     private let profilePictureImageView = ProfilePictureImageView(image: nil)
-    private let reviewTextLabel = UILabel()
+    private let detailsStackView = UIStackView()
+    private let reviewDetailsLabel = UILabel()
+    private let reviewDetailsEditButton = UIButton()
     private let separatorView = UIView()
     private let ratingView: RatingView = {
         let selectedImage = UIImage(named: "filled_star_small")!
@@ -51,14 +59,24 @@ class ReviewView: UIView {
         addSubview(usernameLabel)
         addSubview(ratingView)
         addSubview(infoLabel)
-        addSubview(reviewTextLabel)
+        addSubview(detailsStackView)
         addSubview(separatorView)
+
+        detailsStackView.axis = .vertical
+        detailsStackView.distribution = .fill
+        detailsStackView.alignment = .leading
+
+        detailsStackView.addArrangedSubview(reviewDetailsLabel)
+        detailsStackView.addArrangedSubview(reviewDetailsEditButton)
 
         ratingView.isUserInteractionEnabled = false
         separatorView.backgroundColor = ColorPalette.separatorGray
         LabelStyles.applyElementMediumTitleStyle(usernameLabel)
         LabelStyles.applyNoteStyle(infoLabel)
-        LabelStyles.applyTextBlockStyle(reviewTextLabel)
+        LabelStyles.applyTextBlockStyle(reviewDetailsLabel)
+        ButtonStyles.applyLinkStyle(reviewDetailsEditButton)
+
+        reviewDetailsEditButton.addTarget(self, action: #selector(detailsEditButtonTapped), for: .touchUpInside)
     }
 
     private func setupConstraints() {
@@ -83,11 +101,13 @@ class ReviewView: UIView {
         infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         infoLabel.centerYAnchor.constraint(equalTo: ratingView.centerYAnchor).isActive = true
 
-        reviewTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        reviewTextLabel.leadingAnchor.constraint(equalTo: usernameLabel.leadingAnchor).isActive = true
-        reviewTextLabel.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 11).isActive = true
-        reviewTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        reviewTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
+        detailsStackView.translatesAutoresizingMaskIntoConstraints = false
+        detailsStackView.leadingAnchor.constraint(equalTo: usernameLabel.leadingAnchor).isActive = true
+        detailsStackView.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 11).isActive = true
+        detailsStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        detailsStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
+
+        reviewDetailsEditButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         separatorView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -101,9 +121,20 @@ class ReviewView: UIView {
         usernameLabel.text = model?.username
         ratingView.update(rating: model?.rating)
         infoLabel.text = model?.info
-        reviewTextLabel.text = model?.reviewText
+        reviewDetailsLabel.text = model?.reviewDetails
+        reviewDetailsEditButton.setTitle(model?.editLinkText, for: .normal)
 
-        separatorView.isHidden = model?.shouldShowSeparator == false
+        if model?.reviewDetails?.isEmpty == false {
+            reviewDetailsEditButton.isHidden = true
+        } else {
+            reviewDetailsEditButton.isHidden = !(model?.shouldShowEditDetailsLink == true)
+        }
+
+        separatorView.isHidden = model?.shouldHideSeparator == true
+    }
+
+    @objc func detailsEditButtonTapped() {
+        delegate?.didSelectReviewDetailsEditing()
     }
 }
 
@@ -112,12 +143,10 @@ extension ReviewView {
         let username: String
         let rating: Int
         let info: String
-        let reviewText: String?
+        let reviewDetails: String?
         let profilePictureURL: URL?
-        let shouldShowSeparator: Bool
+        let shouldHideSeparator: Bool
+        let editLinkText: String?
+        let shouldShowEditDetailsLink: Bool
     }
-}
-
-class OwnReviewView: UIView {
-
 }

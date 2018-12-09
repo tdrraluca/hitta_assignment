@@ -32,7 +32,7 @@ extension Date {
         }
 
         if let minutes = components.minute, minutes > 0 {
-            return "\(minutes)m ago"
+            return "\(minutes)min ago"
         } else {
             return "1m ago"
         }

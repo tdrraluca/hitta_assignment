@@ -34,7 +34,7 @@ class CompanyPresenter: CompanyPresentationLogic {
             let info = $0.timestamp.timestampFormat() + " - " + $0.source
             return CompanyDisplayModel.Review(username: $0.username,
                                               userPictureURL: $0.userPictureURL,
-                                              reviewText: $0.reviewText,
+                                              reviewDetails: $0.reviewDetails,
                                               reviewInfo: info,
                                               rating: $0.rating.rawValue)
         }
@@ -50,11 +50,16 @@ class CompanyPresenter: CompanyPresentationLogic {
 
     func present(ownReview: Review?) {
         if let review = ownReview {
-            // Display current review
-            print(review)
+            let info = review.timestamp.timestampFormat() + " - " + review.source
+            let reviewModel = CompanyDisplayModel.Review(username: review.username,
+                                                         userPictureURL: nil,
+                                                         reviewDetails: review.reviewDetails,
+                                                         reviewInfo: info,
+                                                         rating: review.rating.rawValue)
+            viewController?.display(ownReview: CompanyDisplayModel.OwnReview.review(reviewModel))
         } else {
             let noReviewModel = CompanyDisplayModel.NoReview(title: "Rate and review",
-                                                             subtitle: "Share yout experience to help others",
+                                                             subtitle: "Share your experience to help others",
                                                              profilePictureURL: nil)
             viewController?.display(ownReview: CompanyDisplayModel.OwnReview.none(noReviewModel))
         }

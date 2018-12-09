@@ -21,21 +21,21 @@ class CompanyRatingDetailsWorker {
                               userPictureURL: nil,
                               timestamp: Date().addingTimeInterval(-3600 * 12),
                               source: "hitta.se",
-                              reviewText: "Liked it very much - probably one of the best burger places in the city - recommend",
+                              reviewDetails: "Liked it very much - probably one of the best burger places in the city - recommend",
                               rating: .fourStars))
 
         reviews.append(Review(username: "Jenny Svensson",
                               userPictureURL: nil,
                               timestamp: Date().addingTimeInterval(-3600 * 24),
                               source: "hitta.se",
-                              reviewText: "Maybe a bit too fast food. I personally dislike that. Good otherwise",
+                              reviewDetails: "Maybe a bit too fast food. I personally dislike that. Good otherwise",
                               rating: .threeStars))
 
         reviews.append(Review(username: "happy56",
                               userPictureURL: nil,
                               timestamp: Date().addingTimeInterval(-3600 * 24),
                               source: "yelp.com",
-                              reviewText: "Super good! Love the food!",
+                              reviewDetails: "Super good! Love the food!",
                               rating: .fiveStars))
         return RatingDetails(rating: 4.1, ratingCount: 27, latestReviews: reviews)
     }

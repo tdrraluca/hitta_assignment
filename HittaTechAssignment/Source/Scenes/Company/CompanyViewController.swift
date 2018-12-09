@@ -24,7 +24,7 @@ class CompanyViewController: UIViewController {
     @IBOutlet weak var fullScreenLoadingView: UIView!
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var reviewsTitleLabel: UILabel!
-    @IBOutlet weak var ownReviewView: UIView!
+    @IBOutlet weak var ownReviewContainer: UIView!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ratingsCountLabel: UILabel!
     @IBOutlet weak var ratingSummaryViewAllReviewsButton: UIButton!
@@ -37,6 +37,12 @@ class CompanyViewController: UIViewController {
         let rateAndReviewView = RateAndReviewView()
         rateAndReviewView.delegate = self
         return rateAndReviewView
+    } ()
+
+    private lazy var ownReviewView: OwnReviewView = {
+        let ownReviewView = OwnReviewView()
+        ownReviewView.delegate = self
+        return ownReviewView
     } ()
 
     var interactor: CompanyBusinessLogic?
@@ -74,7 +80,7 @@ class CompanyViewController: UIViewController {
         reviewsLoadingView.isHidden = false
         reviewsContentStackView.isHidden = true
 
-        reviewsContentStackView.setCustomSpacing(15.0, after: ownReviewView)
+        reviewsContentStackView.setCustomSpacing(15.0, after: ownReviewContainer)
 
         applyStyle()
 
@@ -117,8 +123,15 @@ class CompanyViewController: UIViewController {
 
     private func installRateAndReviewViewIfNeeded() {
         if rateAndReviewView.superview == nil {
-            ownReviewView.addSubview(rateAndReviewView)
-            ownReviewView.addFillingConstraints(subview: rateAndReviewView)
+            ownReviewContainer.addSubview(rateAndReviewView)
+            ownReviewContainer.addFillingConstraints(subview: rateAndReviewView)
+        }
+    }
+
+    private func installOwnReviewViewIfNeeded() {
+        if ownReviewView.superview == nil {
+            ownReviewContainer.addSubview(ownReviewView)
+            ownReviewContainer.addFillingConstraints(subview: ownReviewView)
         }
     }
 }
@@ -143,12 +156,15 @@ extension CompanyViewController: CompanyDisplayLogic {
         latestReviewsViewAllReviewsButton.setTitle(ratingDetails.allReviewsLinkText, for: .normal)
 
         let latestReviewsModels: [ReviewView.Model] = ratingDetails.latestReviews.enumerated().map {
+            let shouldHideSeparator = $0.offset == ratingDetails.latestReviews.count - 1
             let model = ReviewView.Model(username: $0.element.username,
                                          rating: $0.element.rating,
                                          info: $0.element.reviewInfo,
-                                         reviewText: $0.element.reviewText,
+                                         reviewDetails: $0.element.reviewDetails,
                                          profilePictureURL: $0.element.userPictureURL,
-                                         shouldShowSeparator: $0.offset != ratingDetails.latestReviews.count - 1)
+                                         shouldHideSeparator: shouldHideSeparator,
+                                         editLinkText: nil,
+                                         shouldShowEditDetailsLink: false)
             return model
         }
 
@@ -165,13 +181,26 @@ extension CompanyViewController: CompanyDisplayLogic {
     func display(ownReview: CompanyDisplayModel.OwnReview) {
         switch ownReview {
         case .none(let noReview):
-            //uninstall review view
+            ownReviewView.removeFromSuperview()
             installRateAndReviewViewIfNeeded()
             rateAndReviewView.model = RateAndReviewView.Model(title: noReview.title,
                                                               subtitle: noReview.subtitle,
                                                               profilePictureURL: noReview.profilePictureURL)
-        default:
-            break
+        case .review(let review):
+            rateAndReviewView.removeFromSuperview()
+            installOwnReviewViewIfNeeded()
+
+            let reviewModel = ReviewView.Model(username: review.username,
+                                               rating: review.rating,
+                                               info: review.reviewInfo,
+                                               reviewDetails: review.reviewDetails,
+                                               profilePictureURL: review.userPictureURL,
+                                               shouldHideSeparator: false,
+                                               editLinkText: "Describe your experience",
+                                               shouldShowEditDetailsLink: true)
+            let ownReviewModel = OwnReviewView.Model.init(title: "Your review",
+                                                          review: reviewModel)
+            ownReviewView.model = ownReviewModel
         }
     }
 
@@ -187,5 +216,11 @@ extension CompanyViewController: CompanyDisplayLogic {
 extension CompanyViewController: RateAndReviewViewDelegate {
     func didSelect(rating: Int) {
         interactor?.select(rating: rating)
+    }
+}
+
+extension CompanyViewController: OwnReviewViewDelegate {
+    func didSelectReviewEditing() {
+        router?.routeToReviewPage()
     }
 }

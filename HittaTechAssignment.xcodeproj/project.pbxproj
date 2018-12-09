@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B28168121BDAA820071F8B1 /* OwnReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B28168021BDAA820071F8B1 /* OwnReviewView.swift */; };
 		1B2D56DA21BC03E800750DA6 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D56D921BC03E800750DA6 /* RatingView.swift */; };
 		1B2D56DC21BC068000750DA6 /* RateAndReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D56DB21BC068000750DA6 /* RateAndReviewView.swift */; };
 		1B2D56DE21BC255600750DA6 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D56DD21BC255600750DA6 /* Date+Formatting.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B28168021BDAA820071F8B1 /* OwnReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnReviewView.swift; sourceTree = "<group>"; };
 		1B2D56D921BC03E800750DA6 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		1B2D56DB21BC068000750DA6 /* RateAndReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAndReviewView.swift; sourceTree = "<group>"; };
 		1B2D56DD21BC255600750DA6 /* Date+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				1B2D56DB21BC068000750DA6 /* RateAndReviewView.swift */,
 				1B5D8ABD21BB0F6D005A99F9 /* ReviewView.swift */,
+				1B28168021BDAA820071F8B1 /* OwnReviewView.swift */,
 			);
 			path = VIews;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			files = (
 				1B2D56DE21BC255600750DA6 /* Date+Formatting.swift in Sources */,
 				1B2D56DC21BC068000750DA6 /* RateAndReviewView.swift in Sources */,
+				1B28168121BDAA820071F8B1 /* OwnReviewView.swift in Sources */,
 				1B2D56EA21BC343A00750DA6 /* ReviewViewController.swift in Sources */,
 				1B5D8AAA21B4308C005A99F9 /* CompanyDetails.swift in Sources */,
 				1B5D8A9921B408DE005A99F9 /* Response.swift in Sources */,

@@ -92,12 +92,9 @@
                                                                     <constraint firstItem="q6I-LD-goA" firstAttribute="centerY" secondItem="cHs-C1-jmB" secondAttribute="centerY" id="wgV-Ga-rBD"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-FS-DIW" userLabel="Own Review View">
+                                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="124" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-FS-DIW" userLabel="Own Review View">
                                                                 <rect key="frame" x="0.0" y="67" width="343" height="124"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="124" id="lcS-Nh-amf"/>
-                                                                </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eD5-f0-afr" userLabel="Latest Reviews Stack View">
                                                                 <rect key="frame" x="0.0" y="191" width="343" height="250.5"/>
@@ -189,7 +186,7 @@
                         <outlet property="latestReviewsStackView" destination="dEZ-Rc-w6U" id="UZ9-K0-8qz"/>
                         <outlet property="latestReviewsTitleLabel" destination="PfF-0I-Bo5" id="ZEX-aH-JFH"/>
                         <outlet property="latestReviewsViewAllReviewsButton" destination="xeI-3z-D7T" id="Jw3-f2-NKa"/>
-                        <outlet property="ownReviewView" destination="fLq-FS-DIW" id="14A-nr-GDV"/>
+                        <outlet property="ownReviewContainer" destination="fLq-FS-DIW" id="14A-nr-GDV"/>
                         <outlet property="ratingLabel" destination="q6I-LD-goA" id="WVO-dd-GBX"/>
                         <outlet property="ratingSummarySeparatorView" destination="ruf-fn-lLY" id="AFO-tF-PGT"/>
                         <outlet property="ratingSummaryViewAllReviewsButton" destination="j0w-Um-YtR" id="MuC-Z8-TLv"/>

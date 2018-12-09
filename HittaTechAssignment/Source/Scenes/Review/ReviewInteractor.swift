@@ -58,7 +58,7 @@ class ReviewInteractor: ReviewBusinessLogic, ReviewDataStore {
                              userPictureURL: nil,
                              timestamp: Date(),
                              source: "hitta.se",
-                             reviewText: details,
+                             reviewDetails: details,
                              rating: rating)
         presenter?.presentCompanyPage()
     }

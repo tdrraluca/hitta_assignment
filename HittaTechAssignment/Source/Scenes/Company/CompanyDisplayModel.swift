@@ -16,7 +16,7 @@ struct CompanyDisplayModel {
     struct Review {
         let username: String
         let userPictureURL: URL?
-        let reviewText: String?
+        let reviewDetails: String?
         let reviewInfo: String
         let rating: Int
     }

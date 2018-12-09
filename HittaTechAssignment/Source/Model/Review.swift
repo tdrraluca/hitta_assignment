@@ -36,7 +36,7 @@ struct Review {
     let userPictureURL: URL?
     let timestamp: Date
     let source: String
-    let reviewText: String?
+    let reviewDetails: String?
     let rating: Rating
 }
 

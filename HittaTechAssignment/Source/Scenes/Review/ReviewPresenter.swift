@@ -37,7 +37,7 @@ class ReviewPresenter: ReviewPresentationLogic {
                                                description: review.rating.description)
         let review = ReviewDisplayModel.Review(rating: rating,
                                                username: review.username,
-                                               details: review.reviewText)
+                                               details: review.reviewDetails)
         viewController?.display(review: review)
     }
 
