@@ -17,8 +17,8 @@ protocol CompanyBusinessLogic {
 
 protocol CompanyDataStore {
     var companyName: String? { get }
-    var ownReview: Review? { get }
-    var selectedRating: Int? { get }
+    var ownReview: Review? { get set }
+    var selectedRating: Rating? { get }
 }
 
 class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
@@ -27,9 +27,10 @@ class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
     let companyDetailsWorker = CompanyDetailsWorker()
     let ratingDetailsWorker = CompanyRatingDetailsWorker()
 
+    var ownReview: Review?
+
     private (set) var companyName: String?
-    private (set) var ownReview: Review?
-    private (set) var selectedRating: Int?
+    private (set) var selectedRating: Rating?
 
     func getCompanyDetails() {
         companyDetailsWorker.getCompanyDetails { [weak self] result in
@@ -39,6 +40,7 @@ class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
 
             switch result {
             case .success(let companyDetails):
+                strongSelf.companyName = companyDetails.name
                 strongSelf.presenter?.present(companyDetails: companyDetails)
             case .failure(let error):
                 strongSelf.presenter?.present(error: error)
@@ -70,7 +72,10 @@ class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
     }
 
     func select(rating: Int) {
-        selectedRating = rating
-        presenter?.presentReviewPage()
+        guard let selectedRating = Rating(rawValue: rating) else {
+            preconditionFailure("Invalid rating")
+        }
+        self.selectedRating = selectedRating
+        presenter?.presentReviewDetails()
     }
 }

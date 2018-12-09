@@ -42,6 +42,7 @@
 		1B5D8AC621BBDA95005A99F9 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5D8AC521BBDA95005A99F9 /* Kingfisher.framework */; };
 		1B5D8AC821BBE016005A99F9 /* CompanyDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5D8AC721BBE016005A99F9 /* CompanyDisplayModel.swift */; };
 		1B5D8ACA21BBE0F6005A99F9 /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5D8AC921BBE0F6005A99F9 /* CompanyViewController.swift */; };
+		1B8BEE9621BD32390074C94F /* ReviewDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8BEE9521BD32390074C94F /* ReviewDisplayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		1B5D8AC521BBDA95005A99F9 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		1B5D8AC721BBE016005A99F9 /* CompanyDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDisplayModel.swift; sourceTree = "<group>"; };
 		1B5D8AC921BBE0F6005A99F9 /* CompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
+		1B8BEE9521BD32390074C94F /* ReviewDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDisplayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				1B2D56E421BC343A00750DA6 /* ReviewViewController.swift */,
 				1B2D56E521BC343A00750DA6 /* ReviewInteractor.swift */,
 				1B2D56ED21BC3A5700750DA6 /* Review.storyboard */,
+				1B8BEE9521BD32390074C94F /* ReviewDisplayModel.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				1B5D8AAF21B4402C005A99F9 /* Error.swift in Sources */,
 				1B2D56E621BC343A00750DA6 /* ReviewPresenter.swift in Sources */,
 				1B2D56E821BC343A00750DA6 /* ReviewRouter.swift in Sources */,
+				1B8BEE9621BD32390074C94F /* ReviewDisplayModel.swift in Sources */,
 				1B5D8AC821BBE016005A99F9 /* CompanyDisplayModel.swift in Sources */,
 				1B5D8AC221BB150E005A99F9 /* UIView+Layout.swift in Sources */,
 				1B5D8ABE21BB0F6D005A99F9 /* ReviewView.swift in Sources */,

@@ -44,7 +44,8 @@ class CompanyRouter: NSObject, CompanyRoutingLogic, CompanyDataPassing {
 
     func passDataToReviewPage(source: CompanyDataStore,
                               destination: inout ReviewDataStore) {
-        destination.currentRating = source.selectedRating
+        destination.selectedRating = source.selectedRating
         destination.companyName = source.companyName
+        destination.review = source.ownReview
     }
 }

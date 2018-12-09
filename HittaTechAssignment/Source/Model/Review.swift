@@ -9,11 +9,26 @@
 import Foundation
 
 enum Rating: Int {
-    case oneStar
+    case oneStar = 1
     case twoStars
     case threeStars
     case fourStars
     case fiveStars
+
+    var description: String {
+        switch self {
+        case .oneStar:
+            return "I hated it"
+        case .twoStars:
+            return "I didn't like it"
+        case .threeStars:
+            return "It was OK"
+        case .fourStars:
+            return "I liked it"
+        case .fiveStars:
+            return "I loved it"
+        }
+    }
 }
 
 struct Review {

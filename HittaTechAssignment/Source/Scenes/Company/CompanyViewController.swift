@@ -10,10 +10,10 @@
 import UIKit
 
 protocol CompanyDisplayLogic: class {
-    func displayCompanyDetails(_ model: CompanyDisplayModel.CompanyDetailsDisplayModel)
-    func displayRatingDetails(_ model: CompanyDisplayModel.RatingDetails)
-    func displayOwnReview(_ model: CompanyDisplayModel.OwnReview)
-    func displayReviewPage()
+    func display(companyDetails: CompanyDisplayModel.CompanyDetailsDisplayModel)
+    func display(ratingDetails: CompanyDisplayModel.RatingDetails)
+    func display(ownReview: CompanyDisplayModel.OwnReview)
+    func displayReviewDetails()
     func displayErrorPopup()
 }
 
@@ -125,8 +125,8 @@ class CompanyViewController: UIViewController {
 
 extension CompanyViewController: CompanyDisplayLogic {
 
-    func displayCompanyDetails(_ model: CompanyDisplayModel.CompanyDetailsDisplayModel) {
-        companyNameLabel.text = model.name
+    func display(companyDetails: CompanyDisplayModel.CompanyDetailsDisplayModel) {
+        companyNameLabel.text = companyDetails.name
 
         UIView.animate(withDuration: 0.3, animations: {
             self.fullScreenLoadingView.alpha = 0.0
@@ -135,20 +135,20 @@ extension CompanyViewController: CompanyDisplayLogic {
         })
     }
 
-    func displayRatingDetails(_ model: CompanyDisplayModel.RatingDetails) {
+    func display(ratingDetails: CompanyDisplayModel.RatingDetails) {
 
-        ratingsCountLabel.text = model.ratingsCount
-        ratingLabel.text = model.rating
-        ratingSummaryViewAllReviewsButton.setTitle(model.allReviewsLinkText, for: .normal)
-        latestReviewsViewAllReviewsButton.setTitle(model.allReviewsLinkText, for: .normal)
+        ratingsCountLabel.text = ratingDetails.ratingsCount
+        ratingLabel.text = ratingDetails.rating
+        ratingSummaryViewAllReviewsButton.setTitle(ratingDetails.allReviewsLinkText, for: .normal)
+        latestReviewsViewAllReviewsButton.setTitle(ratingDetails.allReviewsLinkText, for: .normal)
 
-        let latestReviewsModels: [ReviewView.Model] = model.latestReviews.enumerated().map {
+        let latestReviewsModels: [ReviewView.Model] = ratingDetails.latestReviews.enumerated().map {
             let model = ReviewView.Model(username: $0.element.username,
                                          rating: $0.element.rating,
                                          info: $0.element.reviewInfo,
                                          reviewText: $0.element.reviewText,
                                          profilePictureURL: $0.element.userPictureURL,
-                                         shouldShowSeparator: $0.offset != model.latestReviews.count - 1)
+                                         shouldShowSeparator: $0.offset != ratingDetails.latestReviews.count - 1)
             return model
         }
 
@@ -162,8 +162,8 @@ extension CompanyViewController: CompanyDisplayLogic {
         reviewsLoadingView.isHidden = true
     }
 
-    func displayOwnReview(_ model: CompanyDisplayModel.OwnReview) {
-        switch model {
+    func display(ownReview: CompanyDisplayModel.OwnReview) {
+        switch ownReview {
         case .none(let noReview):
             //uninstall review view
             installRateAndReviewViewIfNeeded()
@@ -175,7 +175,7 @@ extension CompanyViewController: CompanyDisplayLogic {
         }
     }
 
-    func displayReviewPage() {
+    func displayReviewDetails() {
         router?.routeToReviewPage()
     }
 

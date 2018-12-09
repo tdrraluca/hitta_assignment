@@ -54,6 +54,11 @@ class LabelStyles {
         label.font = UIFont(name: "Helvetica", size: 16)
         label.textColor = ColorPalette.fakeBlack
     }
+
+    static func applyPlaceholderStyle(_ label: UILabel) {
+        label.font = UIFont(name: "Helvetica", size: 17)
+        label.textColor = ColorPalette.mediumGray
+    }
 }
 
 class ButtonStyles {
@@ -65,5 +70,32 @@ class ButtonStyles {
     static func applyEmphasisedLinkStyle(_ button: UIButton) {
         button.setTitleColor(ColorPalette.linkBlue, for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
+    }
+}
+
+class TextFieldStyles {
+    static func applyHittaStyle(_ textField: UITextField) {
+        textField.borderStyle = .none
+        textField.font = UIFont(name: "Helvetica", size: 17)
+        textField.textColor = ColorPalette.fakeBlack
+    }
+}
+
+class TextViewStyles {
+    static func applyHittaStyle(_ textView: UITextView) {
+        textView.font = UIFont(name: "Helvetica", size: 17)
+        textView.textColor = ColorPalette.fakeBlack
+    }
+}
+
+class AttributedStrings {
+    static func placeholderAttributedString(value: String) -> NSAttributedString {
+
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: ColorPalette.mediumGray,
+            .font: UIFont(name: "Helvetica", size: 17)!
+        ]
+        let attributedString = NSAttributedString(string: value, attributes: attributes)
+        return attributedString
     }
 }

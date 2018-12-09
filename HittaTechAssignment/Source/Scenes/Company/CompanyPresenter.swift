@@ -14,7 +14,7 @@ protocol CompanyPresentationLogic {
     func present(companyDetails: CompanyDetails)
     func present(ratingDetails: RatingDetails)
     func present(ownReview: Review?)
-    func presentReviewPage()
+    func presentReviewDetails()
 }
 
 class CompanyPresenter: CompanyPresentationLogic {
@@ -26,7 +26,7 @@ class CompanyPresenter: CompanyPresentationLogic {
 
     func present(companyDetails: CompanyDetails) {
         let displayModel = CompanyDisplayModel.CompanyDetailsDisplayModel(name: companyDetails.name)
-        viewController?.displayCompanyDetails(displayModel)
+        viewController?.display(companyDetails: displayModel)
     }
 
     func present(ratingDetails: RatingDetails) {
@@ -36,7 +36,7 @@ class CompanyPresenter: CompanyPresentationLogic {
                                               userPictureURL: $0.userPictureURL,
                                               reviewText: $0.reviewText,
                                               reviewInfo: info,
-                                              rating: $0.rating.rawValue + 1)
+                                              rating: $0.rating.rawValue)
         }
 
         let ratingsCount = "from \(ratingDetails.ratingCount) ratings"
@@ -45,7 +45,7 @@ class CompanyPresenter: CompanyPresentationLogic {
                                                             ratingsCount: ratingsCount,
                                                             allReviewsLinkText: "View all reviews",
                                                             latestReviews: latestReviews)
-        viewController?.displayRatingDetails(displayModel)
+        viewController?.display(ratingDetails: displayModel)
     }
 
     func present(ownReview: Review?) {
@@ -56,11 +56,11 @@ class CompanyPresenter: CompanyPresentationLogic {
             let noReviewModel = CompanyDisplayModel.NoReview(title: "Rate and review",
                                                              subtitle: "Share yout experience to help others",
                                                              profilePictureURL: nil)
-            viewController?.displayOwnReview(CompanyDisplayModel.OwnReview.none(noReviewModel))
+            viewController?.display(ownReview: CompanyDisplayModel.OwnReview.none(noReviewModel))
         }
     }
 
-    func presentReviewPage() {
-        viewController?.displayReviewPage()
+    func presentReviewDetails() {
+        viewController?.displayReviewDetails()
     }
 }
