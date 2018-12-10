@@ -105,6 +105,9 @@ class CompanyViewController: UIViewController {
     }
 
     private func loadRatingDetails() {
+        ratingSummaryViewAllReviewsButton.setTitle("View all reviews", for: .normal)
+        latestReviewsViewAllReviewsButton.setTitle("View all reviews", for: .normal)
+
         interactor?.getRatingDetails()
     }
 
@@ -152,8 +155,6 @@ extension CompanyViewController: CompanyDisplayLogic {
 
         ratingsCountLabel.text = ratingDetails.ratingsCount
         ratingLabel.text = ratingDetails.rating
-        ratingSummaryViewAllReviewsButton.setTitle(ratingDetails.allReviewsLinkText, for: .normal)
-        latestReviewsViewAllReviewsButton.setTitle(ratingDetails.allReviewsLinkText, for: .normal)
 
         let latestReviewsModels: [ReviewView.Model] = ratingDetails.latestReviews.enumerated().map {
             let shouldHideSeparator = $0.offset == ratingDetails.latestReviews.count - 1
@@ -183,8 +184,8 @@ extension CompanyViewController: CompanyDisplayLogic {
         case .none(let noReview):
             ownReviewView.removeFromSuperview()
             installRateAndReviewViewIfNeeded()
-            rateAndReviewView.model = RateAndReviewView.Model(title: noReview.title,
-                                                              subtitle: noReview.subtitle,
+            rateAndReviewView.model = RateAndReviewView.Model(title: "Rate and review",
+                                                              subtitle: "Share your experience to help others",
                                                               profilePictureURL: noReview.profilePictureURL)
         case .review(let review):
             rateAndReviewView.removeFromSuperview()

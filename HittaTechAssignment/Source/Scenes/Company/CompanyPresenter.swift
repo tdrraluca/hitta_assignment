@@ -43,7 +43,6 @@ class CompanyPresenter: CompanyPresentationLogic {
 
         let displayModel = CompanyDisplayModel.RatingDetails(rating: "\(ratingDetails.rating)",
                                                             ratingsCount: ratingsCount,
-                                                            allReviewsLinkText: "View all reviews",
                                                             latestReviews: latestReviews)
         viewController?.display(ratingDetails: displayModel)
     }
@@ -58,9 +57,7 @@ class CompanyPresenter: CompanyPresentationLogic {
                                                          rating: review.rating.rawValue)
             viewController?.display(ownReview: CompanyDisplayModel.OwnReview.review(reviewModel))
         } else {
-            let noReviewModel = CompanyDisplayModel.NoReview(title: "Rate and review",
-                                                             subtitle: "Share your experience to help others",
-                                                             profilePictureURL: nil)
+            let noReviewModel = CompanyDisplayModel.NoReview(profilePictureURL: nil)
             viewController?.display(ownReview: CompanyDisplayModel.OwnReview.none(noReviewModel))
         }
     }

@@ -24,13 +24,10 @@ struct CompanyDisplayModel {
     struct RatingDetails {
         let rating: String
         let ratingsCount: String
-        let allReviewsLinkText: String
         let latestReviews: [Review]
     }
 
     struct NoReview {
-        let title: String
-        let subtitle: String
         let profilePictureURL: URL?
     }
 
