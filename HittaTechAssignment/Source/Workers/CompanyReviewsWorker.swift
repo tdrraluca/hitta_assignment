@@ -8,16 +8,20 @@
 
 import Foundation
 
-class CompanyRatingDetailsWorker {
+class CompanyReviewsWorker {
     func getCompanyRatingDetails(completion: @escaping(Result<RatingDetails>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
             completion(.success(self.ratingMockData()))
         })
     }
 
+    func saveReview(review: Review) {
+        APIClient().perform(request: CompanyReviewSaveRequest(review: review)) { _ in }
+    }
+
     private func ratingMockData() -> RatingDetails {
         var reviews = [Review]()
-        reviews.append(Review(username: "Anonym",
+        reviews.append(Review(username: "Anonymous",
                               userPictureURL: nil,
                               timestamp: Date().addingTimeInterval(-3600 * 12),
                               source: "hitta.se",

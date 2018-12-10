@@ -25,7 +25,7 @@ class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
 
     var presenter: CompanyPresentationLogic?
     let companyDetailsWorker = CompanyDetailsWorker()
-    let ratingDetailsWorker = CompanyRatingDetailsWorker()
+    let companyReviewsWorker = CompanyReviewsWorker()
 
     var ownReview: Review?
 
@@ -49,7 +49,7 @@ class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
     }
 
     func getRatingDetails() {
-        ratingDetailsWorker.getCompanyRatingDetails { [weak self] result in
+        companyReviewsWorker.getCompanyRatingDetails { [weak self] result in
             guard let strongSelf = self  else {
                 return
             }

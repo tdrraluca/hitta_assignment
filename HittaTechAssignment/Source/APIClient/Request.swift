@@ -51,9 +51,6 @@ extension Request {
     }
 }
 
-struct CompanyDetailsRequest: Request {
-    typealias AssociatedResponse = CompanyDetailsResponse
-    var url: URL {
-        return URL(string: "https://api.hitta.se/search/v7/app/company/ctyfiintu")!
-    }
+protocol Response {
+    init?(data: Data?)
 }

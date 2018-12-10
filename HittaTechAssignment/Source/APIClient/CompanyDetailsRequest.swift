@@ -1,15 +1,19 @@
 //
-//  Response.swift
+//  CompanyDetails.swift
 //  HittaTechAssignment
 //
-//  Created by Raluca Toadere on 02/12/2018.
+//  Created by Raluca Toadere on 10/12/2018.
 //  Copyright © 2018 Raluca Toadere. All rights reserved.
 //
 
 import Foundation
 
-protocol Response {
-    init?(data: Data?)
+struct CompanyDetailsRequest: Request {
+    typealias AssociatedResponse = CompanyDetailsResponse
+
+    var url: URL {
+        return URL(string: "https://api.hitta.se/search/v7/app/company/ctyfiintu")!
+    }
 }
 
 struct CompanyDetailsResponse: Response {

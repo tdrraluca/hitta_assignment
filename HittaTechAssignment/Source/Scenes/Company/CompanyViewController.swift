@@ -199,8 +199,8 @@ extension CompanyViewController: CompanyDisplayLogic {
                                                shouldHideSeparator: false,
                                                editLinkText: "Describe your experience",
                                                shouldShowEditDetailsLink: true)
-            let ownReviewModel = OwnReviewView.Model.init(title: "Your review",
-                                                          review: reviewModel)
+            let ownReviewModel = OwnReviewView.Model(title: "Your review",
+                                                    review: reviewModel)
             ownReviewView.model = ownReviewModel
         }
     }

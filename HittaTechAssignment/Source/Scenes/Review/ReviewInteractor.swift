@@ -12,7 +12,7 @@ protocol ReviewBusinessLogic {
     func getCompanyName()
     func getReviewData()
     func select(rating: Int)
-    func concludeReview(username: String?, details: String?)
+    func concludeReview(username: String?, details: String?, isSave: Bool)
 }
 
 protocol ReviewDataStore {
@@ -23,6 +23,8 @@ protocol ReviewDataStore {
 
 class ReviewInteractor: ReviewBusinessLogic, ReviewDataStore {
     var presenter: ReviewPresentationLogic?
+
+    let companyReviewsWorker = CompanyReviewsWorker()
 
     var selectedRating: Rating?
     var companyName: String?
@@ -48,18 +50,23 @@ class ReviewInteractor: ReviewBusinessLogic, ReviewDataStore {
         presenter?.present(rating: selectedRating)
     }
 
-    func concludeReview(username: String?, details: String?) {
+    func concludeReview(username: String?, details: String?, isSave: Bool) {
         guard let rating = selectedRating else {
             presenter?.presentCompanyPage()
             return
         }
-        let user = username?.isEmpty == false ? username! : "Anonym"
-        review = Review.init(username: user,
-                             userPictureURL: nil,
-                             timestamp: Date(),
-                             source: "hitta.se",
-                             reviewDetails: details,
-                             rating: rating)
+        let user = username?.isEmpty == false ? username! : "Anonymous"
+        let review = Review(username: user,
+                            userPictureURL: nil,
+                            timestamp: Date(),
+                            source: "hitta.se",
+                            reviewDetails: details,
+                            rating: rating)
+        if isSave {
+            companyReviewsWorker.saveReview(review: review)
+        }
+        self.review = review
+
         presenter?.presentCompanyPage()
     }
 }

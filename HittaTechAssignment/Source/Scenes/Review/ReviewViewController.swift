@@ -132,14 +132,16 @@ class ReviewViewController: UIViewController {
         let exitAndSaveAction = UIAlertAction(title: "Exit and save your review",
                                               style: .default) { _ in
             self.interactor?.concludeReview(username: self.usernameTextField.text,
-                                            details: self.reviewDetailsTextView.text)
+                                            details: self.reviewDetailsTextView.text,
+                                            isSave: true)
         }
         actionSheet.addAction(exitAndSaveAction)
 
         let exitWithoutSavingAction = UIAlertAction(title: "Exit without saving",
                                                     style: .destructive) { _ in
             self.interactor?.concludeReview(username: self.usernameTextField.text,
-                                            details: self.reviewDetailsTextView.text)
+                                            details: self.reviewDetailsTextView.text,
+                                            isSave: false)
         }
         actionSheet.addAction(exitWithoutSavingAction)
 
@@ -156,7 +158,8 @@ class ReviewViewController: UIViewController {
                   cancelButtonTitle: "Okay!",
                   cancelHandler: {
             self.interactor?.concludeReview(username: self.usernameTextField.text,
-                                            details: self.reviewDetailsTextView.text)
+                                            details: self.reviewDetailsTextView.text,
+                                            isSave: true)
         })
     }
 }
