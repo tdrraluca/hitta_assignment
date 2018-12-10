@@ -89,12 +89,14 @@ class ReviewViewController: UIViewController {
                                           style: .plain,
                                           target: self,
                                           action: #selector(closeButtonTapped))
+        closeButton.setTitleTextAttributes(AttributedStrings.navigationBarAttributes(), for: .normal)
         navigationItem.leftBarButtonItem = closeButton
 
         let saveButton = UIBarButtonItem(title: "Save",
                                          style: .plain,
                                          target: self,
                                          action: #selector(saveButtonTapped))
+        saveButton.setTitleTextAttributes(AttributedStrings.navigationBarAttributes(), for: .normal)
         navigationItem.rightBarButtonItem = saveButton
         interactor?.getCompanyName()
     }

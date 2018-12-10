@@ -85,6 +85,7 @@ class TextViewStyles {
     static func applyHittaStyle(_ textView: UITextView) {
         textView.font = UIFont(name: "Helvetica", size: 17)
         textView.textColor = ColorPalette.fakeBlack
+        textView.textContainer.lineFragmentPadding = 0
     }
 }
 
@@ -97,5 +98,13 @@ class AttributedStrings {
         ]
         let attributedString = NSAttributedString(string: value, attributes: attributes)
         return attributedString
+    }
+
+    static func navigationBarAttributes() -> [NSAttributedString.Key: Any] {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: ColorPalette.white,
+            .font: UIFont(name: "Helvetica", size: 17)!
+        ]
+        return attributes
     }
 }

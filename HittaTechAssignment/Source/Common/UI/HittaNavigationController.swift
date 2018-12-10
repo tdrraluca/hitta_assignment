@@ -15,8 +15,7 @@ class HittaNavigationController: UINavigationController {
         navigationBar.isTranslucent = false
         navigationBar.barTintColor = ColorPalette.navigationBlue
         navigationBar.tintColor = ColorPalette.white
-        let titleAttributes = [NSAttributedString.Key.foregroundColor: ColorPalette.white]
-        navigationBar.titleTextAttributes = titleAttributes
+        navigationBar.titleTextAttributes = AttributedStrings.navigationBarAttributes()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

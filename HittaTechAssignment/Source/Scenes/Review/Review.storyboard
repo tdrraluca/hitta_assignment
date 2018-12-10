@@ -72,7 +72,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6Z-uZ-hnr" userLabel="Review Placeholder Label">
-                                                <rect key="frame" x="5" y="10" width="355" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="10" width="360" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="DDH-fg-HRy" firstAttribute="leading" secondItem="uum-Dw-KTc" secondAttribute="leading" id="2DP-mx-UnZ"/>
-                                            <constraint firstItem="o6Z-uZ-hnr" firstAttribute="leading" secondItem="DDH-fg-HRy" secondAttribute="leading" constant="5" id="Ai1-U6-sqp"/>
+                                            <constraint firstItem="o6Z-uZ-hnr" firstAttribute="leading" secondItem="DDH-fg-HRy" secondAttribute="leading" id="Ai1-U6-sqp"/>
                                             <constraint firstAttribute="trailing" secondItem="DDH-fg-HRy" secondAttribute="trailing" id="E98-8s-7O9"/>
                                             <constraint firstItem="DDH-fg-HRy" firstAttribute="top" secondItem="uum-Dw-KTc" secondAttribute="top" id="HkU-yg-R1y"/>
                                             <constraint firstAttribute="height" constant="80" id="NVq-iy-tDh"/>
