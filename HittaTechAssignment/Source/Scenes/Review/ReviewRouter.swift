@@ -25,7 +25,7 @@ class ReviewRouter: NSObject, ReviewRoutingLogic, ReviewDataPassing {
         let destinationVC = viewController?.presentingViewController as! CompanyViewController
         // swiftlint:enable force_cast
         var destinationDS = destinationVC.router!.dataStore!
-        passDataToReviewPage(source: dataStore!, destination: &destinationDS)
+        passDataToCompanyPage(source: dataStore!, destination: &destinationDS)
         navigateToCompanyPage()
     }
 
@@ -35,8 +35,8 @@ class ReviewRouter: NSObject, ReviewRoutingLogic, ReviewDataPassing {
 
     // MARK: Passing data
 
-    func passDataToReviewPage(source: ReviewDataStore,
-                              destination: inout CompanyDataStore) {
+    func passDataToCompanyPage(source: ReviewDataStore,
+                               destination: inout CompanyDataStore) {
         destination.ownReview = source.review
     }
 }
