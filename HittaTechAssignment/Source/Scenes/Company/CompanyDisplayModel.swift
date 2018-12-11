@@ -35,4 +35,8 @@ struct CompanyDisplayModel {
         case none(NoReview)
         case review(Review)
     }
+
+    struct Error {
+        let message: String
+    }
 }

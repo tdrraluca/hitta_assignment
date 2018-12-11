@@ -13,6 +13,7 @@ protocol ReviewPresentationLogic {
     func present(rating: Rating?)
     func present(review: Review)
     func presentCompanyPage()
+    func present(reviewSaveError: Error)
 }
 
 class ReviewPresenter: ReviewPresentationLogic {
@@ -43,5 +44,10 @@ class ReviewPresenter: ReviewPresentationLogic {
 
     func presentCompanyPage() {
         viewController?.displayCompanyPage()
+    }
+
+    func present(reviewSaveError: Error) {
+        let model = ReviewDisplayModel.Error(message: reviewSaveError.localizedDescription)
+        viewController?.display(reviewSaveError: model)
     }
 }

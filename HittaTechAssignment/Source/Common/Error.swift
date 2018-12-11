@@ -10,4 +10,11 @@ import Foundation
 
 enum Error: LocalizedError {
     case apiClientError(message: String)
+
+    var errorDescription: String? {
+        switch self {
+        case .apiClientError(let message):
+            return message
+        }
+    }
 }

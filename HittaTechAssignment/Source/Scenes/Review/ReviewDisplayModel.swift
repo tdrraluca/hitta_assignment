@@ -19,4 +19,8 @@ struct ReviewDisplayModel {
         let username: String?
         let details: String?
     }
+
+    struct Error {
+        let message: String
+    }
 }

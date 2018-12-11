@@ -43,14 +43,14 @@ class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
                 strongSelf.companyName = companyDetails.name
                 strongSelf.presenter?.present(companyDetails: companyDetails)
             case .failure(let error):
-                strongSelf.presenter?.present(error: error)
+                strongSelf.presenter?.present(companyDetailsError: error)
             }
         }
     }
 
     func getRatingDetails() {
         companyReviewsWorker.getCompanyRatingDetails { [weak self] result in
-            guard let strongSelf = self  else {
+            guard let strongSelf = self else {
                 return
             }
 
@@ -62,7 +62,7 @@ class CompanyInteractor: CompanyBusinessLogic, CompanyDataStore {
                                                          latestReviews: sortedLatestReviews)
                 strongSelf.presenter?.present(ratingDetails: updatedRatingDetails)
             case .failure(let error):
-                strongSelf.presenter?.present(error: error)
+                strongSelf.presenter?.present(ratingDetailsError: error)
             }
         }
     }

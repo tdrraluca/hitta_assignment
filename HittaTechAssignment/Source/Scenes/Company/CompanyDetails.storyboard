@@ -155,7 +155,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFo-03-thH" userLabel="Full Screen Loading View">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Q5T-le-A0y">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Q5T-le-A0y">
                                         <rect key="frame" x="177.5" y="313.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -181,6 +181,7 @@
                         <viewLayoutGuide key="safeArea" id="GVr-3n-iCg"/>
                     </view>
                     <connections>
+                        <outlet property="companyDetailsLoadingIndicator" destination="Q5T-le-A0y" id="ITi-lw-cTW"/>
                         <outlet property="companyNameLabel" destination="arZ-ML-03K" id="vY8-Fj-E4N"/>
                         <outlet property="fullScreenLoadingView" destination="EFo-03-thH" id="2EK-6V-yGc"/>
                         <outlet property="latestReviewsStackView" destination="dEZ-Rc-w6U" id="UZ9-K0-8qz"/>

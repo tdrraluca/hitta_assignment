@@ -15,8 +15,15 @@ class CompanyReviewsWorker {
         })
     }
 
-    func saveReview(review: Review) {
-        APIClient().perform(request: CompanyReviewSaveRequest(review: review)) { _ in }
+    func saveReview(review: Review, completion: @escaping(Result<Void>) -> Void) {
+        APIClient().perform(request: CompanyReviewSaveRequest(review: review)) { result in
+            switch result {
+            case .success:
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(.apiClientError(message: error.localizedDescription)))
+            }
+        }
     }
 
     private func ratingMockData() -> RatingDetails {

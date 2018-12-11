@@ -13,6 +13,7 @@ protocol ReviewDisplayLogic: class {
     func display(rating: ReviewDisplayModel.Rating?)
     func display(review: ReviewDisplayModel.Review)
     func displayCompanyPage()
+    func display(reviewSaveError: ReviewDisplayModel.Error)
 }
 
 class ReviewViewController: UIViewController {
@@ -37,6 +38,18 @@ class ReviewViewController: UIViewController {
                                                selectedImage: selectedImage,
                                                unselectedImage: unselectedImage)
         return RatingView(frame: .zero, model: ratingViewModel)
+    }()
+
+    private lazy var loadingView: UIView  = {
+        let view = UIView()
+        view.backgroundColor = ColorPalette.transparentWhite
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        return view
     }()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -131,9 +144,7 @@ class ReviewViewController: UIViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let exitAndSaveAction = UIAlertAction(title: "Exit and save your review",
                                               style: .default) { _ in
-            self.interactor?.concludeReview(username: self.usernameTextField.text,
-                                            details: self.reviewDetailsTextView.text,
-                                            isSave: true)
+            self.saveReview()
         }
         actionSheet.addAction(exitAndSaveAction)
 
@@ -157,9 +168,29 @@ class ReviewViewController: UIViewController {
                   message: "You're helping others make smarter decisions every day",
                   cancelButtonTitle: "Okay!",
                   cancelHandler: {
-            self.interactor?.concludeReview(username: self.usernameTextField.text,
-                                            details: self.reviewDetailsTextView.text,
-                                            isSave: true)
+            self.saveReview()
+        })
+    }
+
+    private func saveReview() {
+        showLoadingView()
+        self.interactor?.concludeReview(username: self.usernameTextField.text,
+                                        details: self.reviewDetailsTextView.text,
+                                        isSave: true)
+    }
+
+    private func showLoadingView() {
+        view.addSubview(loadingView)
+        view.addFillingConstraints(subview: loadingView)
+    }
+
+    private func hideLoadingView(completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.loadingView.alpha = 0.0
+        }, completion: { _ in
+            self.loadingView.removeFromSuperview()
+            self.loadingView.alpha = 1.0
+            completion()
         })
     }
 }
@@ -183,7 +214,17 @@ extension ReviewViewController: ReviewDisplayLogic {
     }
 
     func displayCompanyPage() {
-        router?.routeToCompanyPage()
+
+        hideLoadingView(completion: {
+            self.router?.routeToCompanyPage()
+        })
+    }
+
+    func display(reviewSaveError: ReviewDisplayModel.Error) {
+        showAlert(title: nil,
+                  message: reviewSaveError.message,
+                  cancelButtonTitle: "OK",
+                  cancelHandler: nil)
     }
 }
 

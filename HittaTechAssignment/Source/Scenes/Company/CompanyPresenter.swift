@@ -10,9 +10,10 @@
 import UIKit
 
 protocol CompanyPresentationLogic {
-    func present(error: Error)
     func present(companyDetails: CompanyDetails)
+    func present(companyDetailsError: Error)
     func present(ratingDetails: RatingDetails)
+    func present(ratingDetailsError: Error)
     func present(ownReview: Review?)
     func presentReviewDetails()
 }
@@ -20,13 +21,14 @@ protocol CompanyPresentationLogic {
 class CompanyPresenter: CompanyPresentationLogic {
     weak var viewController: CompanyDisplayLogic?
 
-    func present(error: Error) {
-        viewController?.displayErrorPopup()
-    }
-
     func present(companyDetails: CompanyDetails) {
         let displayModel = CompanyDisplayModel.CompanyDetailsDisplayModel(name: companyDetails.name)
         viewController?.display(companyDetails: displayModel)
+    }
+
+    func present(companyDetailsError: Error) {
+        let model = CompanyDisplayModel.Error(message: companyDetailsError.localizedDescription)
+        viewController?.display(companyDetailsError: model)
     }
 
     func present(ratingDetails: RatingDetails) {
@@ -45,6 +47,11 @@ class CompanyPresenter: CompanyPresentationLogic {
                                                             ratingsCount: ratingsCount,
                                                             latestReviews: latestReviews)
         viewController?.display(ratingDetails: displayModel)
+    }
+
+    func present(ratingDetailsError: Error) {
+        let model = CompanyDisplayModel.Error(message: ratingDetailsError.localizedDescription)
+        viewController?.display(companyDetailsError: model)
     }
 
     func present(ownReview: Review?) {

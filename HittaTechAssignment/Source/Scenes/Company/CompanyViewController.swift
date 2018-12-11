@@ -14,7 +14,8 @@ protocol CompanyDisplayLogic: class {
     func display(ratingDetails: CompanyDisplayModel.RatingDetails)
     func display(ownReview: CompanyDisplayModel.OwnReview)
     func displayReviewDetails()
-    func displayErrorPopup()
+    func display(companyDetailsError: CompanyDisplayModel.Error)
+    func display(ratingDetailsError: CompanyDisplayModel.Error)
 }
 
 class CompanyViewController: UIViewController {
@@ -22,6 +23,7 @@ class CompanyViewController: UIViewController {
     @IBOutlet weak var reviewsLoadingView: UIView!
     @IBOutlet weak var reviewsContentStackView: UIStackView!
     @IBOutlet weak var fullScreenLoadingView: UIView!
+    @IBOutlet weak var companyDetailsLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var reviewsTitleLabel: UILabel!
     @IBOutlet weak var ownReviewContainer: UIView!
@@ -151,6 +153,14 @@ extension CompanyViewController: CompanyDisplayLogic {
         })
     }
 
+    func display(companyDetailsError: CompanyDisplayModel.Error) {
+        companyDetailsLoadingIndicator.stopAnimating()
+        showAlert(title: nil,
+                  message: companyDetailsError.message,
+                  cancelButtonTitle: "OK",
+                  cancelHandler: nil)
+    }
+
     func display(ratingDetails: CompanyDisplayModel.RatingDetails) {
 
         ratingsCountLabel.text = ratingDetails.ratingsCount
@@ -209,8 +219,9 @@ extension CompanyViewController: CompanyDisplayLogic {
         router?.routeToReviewPage()
     }
 
-    func displayErrorPopup() {
-
+    func display(ratingDetailsError: CompanyDisplayModel.Error) {
+        reviewsLoadingView.isHidden = true
+        reviewsContentStackView.isHidden = true
     }
 }
 

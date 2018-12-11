@@ -63,10 +63,21 @@ class ReviewInteractor: ReviewBusinessLogic, ReviewDataStore {
                             reviewDetails: details,
                             rating: rating)
         if isSave {
-            companyReviewsWorker.saveReview(review: review)
+            companyReviewsWorker.saveReview(review: review) { [weak self] result in
+                guard let strongSelf = self else {
+                    return
+                }
+
+                switch result {
+                case .success:
+                    strongSelf.presenter?.presentCompanyPage()
+                case .failure(let error):
+                    strongSelf.presenter?.present(reviewSaveError: error)
+                }
+            }
+        } else {
+            self.presenter?.presentCompanyPage()
         }
         self.review = review
-
-        presenter?.presentCompanyPage()
     }
 }

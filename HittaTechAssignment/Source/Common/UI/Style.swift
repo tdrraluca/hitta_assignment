@@ -9,11 +9,14 @@
 import UIKit
 
 struct ColorPalette {
+    static let black = UIColor(hexRed: 0x00, hexGreen: 0x00, hexBlue: 0x00, alpha: 1)
     static let fakeBlack = UIColor(hexRed: 0x33, hexGreen: 0x33, hexBlue: 0x33, alpha: 1)
     static let white = UIColor(hexRed: 0xff, hexGreen: 0xff, hexBlue: 0xff, alpha: 1)
+    static let transparentWhite = UIColor(hexRed: 0xff, hexGreen: 0xff, hexBlue: 0xff, alpha: 0.7)
     static let yellow = UIColor(hexRed: 0xfe, hexGreen: 0xcd, hexBlue: 0x01, alpha: 1)
     static let linkBlue = UIColor(hexRed: 0x03, hexGreen: 0x9b, hexBlue: 0xef, alpha: 1)
     static let mediumGray = UIColor(hexRed: 0x9b, hexGreen: 0x9b, hexBlue: 0x9b, alpha: 1)
+    static let placeholderGray = UIColor(hexRed: 0x8c, hexGreen: 0x8c, hexBlue: 0x8c, alpha: 1)
     static let separatorGray = UIColor(hexRed: 0xef, hexGreen: 0xef, hexBlue: 0xe4, alpha: 1)
     static let navigationBlue = UIColor(hexRed: 0x34, hexGreen: 0xaf, hexBlue: 0xf4, alpha: 1)
 }
@@ -46,7 +49,7 @@ class LabelStyles {
 
     static func applyElementMediumTitleStyle(_ label: UILabel) {
         label.font = UIFont(name: "HelveticaNeue-Medium", size: 16)
-        label.textColor = ColorPalette.fakeBlack
+        label.textColor = ColorPalette.black
     }
 
     static func applyTextBlockStyle(_ label: UILabel) {
@@ -57,7 +60,7 @@ class LabelStyles {
 
     static func applyPlaceholderStyle(_ label: UILabel) {
         label.font = UIFont(name: "Helvetica", size: 17)
-        label.textColor = ColorPalette.mediumGray
+        label.textColor = ColorPalette.placeholderGray
     }
 }
 
