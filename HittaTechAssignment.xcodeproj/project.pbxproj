@@ -147,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				1B5467D921B2FF99008FA7E2 /* Source */,
-				1B5467E121B30010008FA7E2 /* ThirdPartySource */,
 				1B5467D321B2FF99008FA7E2 /* Resources */,
 				1B5467D521B2FF99008FA7E2 /* SupportingFiles */,
 			);
@@ -174,21 +173,14 @@
 		1B5467D921B2FF99008FA7E2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				1B5467DB21B2FF99008FA7E2 /* AppDelegate.swift */,
 				1B5D8A9A21B42779005A99F9 /* Scenes */,
 				1B5D8AA821B4307A005A99F9 /* Model */,
 				1B5D8A9521B3FCE3005A99F9 /* Common */,
 				1B5D8AAD21B44002005A99F9 /* Workers */,
 				1B5D8A8921B30F9A005A99F9 /* APIClient */,
-				1B5467DB21B2FF99008FA7E2 /* AppDelegate.swift */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		1B5467E121B30010008FA7E2 /* ThirdPartySource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ThirdPartySource;
 			sourceTree = "<group>";
 		};
 		1B5D8A8521B30E12005A99F9 /* Frameworks */ = {
