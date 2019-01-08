@@ -57,7 +57,7 @@ class RatingView: UIView {
     }
 
     private func setupConstraints() {
-        addFillingConstraints(subview: elementsStackView)
+        addFillingConstraints(for: elementsStackView)
     }
 
     private func updateSelection() {
@@ -117,7 +117,7 @@ class RatingItemControl: UIControl {
     }
 
     private func setupConstraints() {
-        addFillingConstraints(subview: imageView)
+        addFillingConstraints(for: imageView)
     }
 }
 

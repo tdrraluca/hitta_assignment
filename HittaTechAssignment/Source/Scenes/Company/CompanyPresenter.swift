@@ -22,7 +22,7 @@ class CompanyPresenter: CompanyPresentationLogic {
     weak var viewController: CompanyDisplayLogic?
 
     func present(companyDetails: CompanyDetails) {
-        let displayModel = CompanyDisplayModel.CompanyDetailsDisplayModel(name: companyDetails.name)
+        let displayModel = CompanyDisplayModel.CompanyDetails(name: companyDetails.name)
         viewController?.display(companyDetails: displayModel)
     }
 

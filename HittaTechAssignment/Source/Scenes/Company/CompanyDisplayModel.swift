@@ -9,7 +9,7 @@
 import Foundation
 
 struct CompanyDisplayModel {
-    struct CompanyDetailsDisplayModel {
+    struct CompanyDetails {
         let name: String
     }
 

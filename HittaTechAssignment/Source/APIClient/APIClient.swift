@@ -25,7 +25,7 @@ class APIClient {
 
             switch response.result {
             case .success:
-                if let data = response.result.value, let response = T.AssociatedResponse.init(data: data) {
+                if let response = T.AssociatedResponse.init(data: response.data) {
                     completion(.success(response))
                 } else {
                     completion(.failure(APIClient.Error.responseDecodingError))
@@ -44,9 +44,8 @@ class APIClient {
                     default:
                         break
                     }
-
-                    completion(.failure(.other(error.localizedDescription)))
                 }
+                completion(.failure(.other(error.localizedDescription)))
             }
         }
     }

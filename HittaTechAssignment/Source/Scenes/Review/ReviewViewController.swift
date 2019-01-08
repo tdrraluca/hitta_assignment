@@ -115,7 +115,7 @@ class ReviewViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        ratingViewContainer.addFillingConstraints(subview: ratingView)
+        ratingViewContainer.addFillingConstraints(for: ratingView)
     }
 
     private func applyStyle() {
@@ -181,7 +181,7 @@ class ReviewViewController: UIViewController {
 
     private func showLoadingView() {
         view.addSubview(loadingView)
-        view.addFillingConstraints(subview: loadingView)
+        view.addFillingConstraints(for: loadingView)
     }
 
     private func hideLoadingView(completion: @escaping () -> Void) {

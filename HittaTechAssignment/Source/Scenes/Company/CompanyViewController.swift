@@ -10,7 +10,7 @@
 import UIKit
 
 protocol CompanyDisplayLogic: class {
-    func display(companyDetails: CompanyDisplayModel.CompanyDetailsDisplayModel)
+    func display(companyDetails: CompanyDisplayModel.CompanyDetails)
     func display(ratingDetails: CompanyDisplayModel.RatingDetails)
     func display(ownReview: CompanyDisplayModel.OwnReview)
     func displayReviewDetails()
@@ -129,21 +129,21 @@ class CompanyViewController: UIViewController {
     private func installRateAndReviewViewIfNeeded() {
         if rateAndReviewView.superview == nil {
             ownReviewContainer.addSubview(rateAndReviewView)
-            ownReviewContainer.addFillingConstraints(subview: rateAndReviewView)
+            ownReviewContainer.addFillingConstraints(for: rateAndReviewView)
         }
     }
 
     private func installOwnReviewViewIfNeeded() {
         if ownReviewView.superview == nil {
             ownReviewContainer.addSubview(ownReviewView)
-            ownReviewContainer.addFillingConstraints(subview: ownReviewView)
+            ownReviewContainer.addFillingConstraints(for: ownReviewView)
         }
     }
 }
 
 extension CompanyViewController: CompanyDisplayLogic {
 
-    func display(companyDetails: CompanyDisplayModel.CompanyDetailsDisplayModel) {
+    func display(companyDetails: CompanyDisplayModel.CompanyDetails) {
         companyNameLabel.text = companyDetails.name
 
         UIView.animate(withDuration: 0.3, animations: {
