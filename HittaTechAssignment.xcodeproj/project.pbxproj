@@ -45,7 +45,18 @@
 		1BDCABC121BF0D4800FDC15F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BDCABC021BF0D4800FDC15F /* Assets.xcassets */; };
 		1BDCABC321BF0DEB00FDC15F /* CompanyReviewSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDCABC221BF0DEB00FDC15F /* CompanyReviewSaveRequest.swift */; };
 		1BDCABC521BF0E2A00FDC15F /* CompanyDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDCABC421BF0E2A00FDC15F /* CompanyDetailsRequest.swift */; };
+		67856E262269DE45004C966B /* HittaTechAssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67856E252269DE45004C966B /* HittaTechAssignmentUITests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67856E282269DE45004C966B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B5467B321B2F90C008FA7E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B5467BA21B2F90C008FA7E2;
+			remoteInfo = HittaTechAssignment;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1B28168021BDAA820071F8B1 /* OwnReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnReviewView.swift; sourceTree = "<group>"; };
@@ -88,6 +99,9 @@
 		1BDCABC021BF0D4800FDC15F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1BDCABC221BF0DEB00FDC15F /* CompanyReviewSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyReviewSaveRequest.swift; sourceTree = "<group>"; };
 		1BDCABC421BF0E2A00FDC15F /* CompanyDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsRequest.swift; sourceTree = "<group>"; };
+		67856E232269DE44004C966B /* HittaTechAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HittaTechAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67856E252269DE45004C966B /* HittaTechAssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HittaTechAssignmentUITests.swift; sourceTree = "<group>"; };
+		67856E272269DE45004C966B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +111,13 @@
 			files = (
 				1B5D8AC621BBDA95005A99F9 /* Kingfisher.framework in Frameworks */,
 				1B5D8A8721B30E12005A99F9 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67856E202269DE44004C966B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				1B5467BD21B2F90C008FA7E2 /* HittaTechAssignment */,
+				67856E242269DE45004C966B /* HittaTechAssignmentUITests */,
 				1B5467BC21B2F90C008FA7E2 /* Products */,
 				1B5D8A8521B30E12005A99F9 /* Frameworks */,
 			);
@@ -139,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				1B5467BB21B2F90C008FA7E2 /* HittaTechAssignment.app */,
+				67856E232269DE44004C966B /* HittaTechAssignmentUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,6 +300,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		67856E242269DE45004C966B /* HittaTechAssignmentUITests */ = {
+			isa = PBXGroup;
+			children = (
+				67856E252269DE45004C966B /* HittaTechAssignmentUITests.swift */,
+				67856E272269DE45004C966B /* Info.plist */,
+			);
+			path = HittaTechAssignmentUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -299,18 +331,40 @@
 			productReference = 1B5467BB21B2F90C008FA7E2 /* HittaTechAssignment.app */;
 			productType = "com.apple.product-type.application";
 		};
+		67856E222269DE44004C966B /* HittaTechAssignmentUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67856E2C2269DE45004C966B /* Build configuration list for PBXNativeTarget "HittaTechAssignmentUITests" */;
+			buildPhases = (
+				67856E1F2269DE44004C966B /* Sources */,
+				67856E202269DE44004C966B /* Frameworks */,
+				67856E212269DE44004C966B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67856E292269DE45004C966B /* PBXTargetDependency */,
+			);
+			name = HittaTechAssignmentUITests;
+			productName = HittaTechAssignmentUITests;
+			productReference = 67856E232269DE44004C966B /* HittaTechAssignmentUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		1B5467B321B2F90C008FA7E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Raluca Toadere";
 				TargetAttributes = {
 					1B5467BA21B2F90C008FA7E2 = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					67856E222269DE44004C966B = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 1B5467BA21B2F90C008FA7E2;
 					};
 				};
 			};
@@ -328,6 +382,7 @@
 			projectRoot = "";
 			targets = (
 				1B5467BA21B2F90C008FA7E2 /* HittaTechAssignment */,
+				67856E222269DE44004C966B /* HittaTechAssignmentUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -341,6 +396,13 @@
 				1B5D8AB521B46E2F005A99F9 /* CompanyDetails.storyboard in Resources */,
 				1BDCABC121BF0D4800FDC15F /* Assets.xcassets in Resources */,
 				1B2D56EE21BC3A5700750DA6 /* Review.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67856E212269DE44004C966B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +491,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		67856E1F2269DE44004C966B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67856E262269DE45004C966B /* HittaTechAssignmentUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67856E292269DE45004C966B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B5467BA21B2F90C008FA7E2 /* HittaTechAssignment */;
+			targetProxy = 67856E282269DE45004C966B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1B5467D621B2FF99008FA7E2 /* LaunchScreen.storyboard */ = {
@@ -603,6 +681,44 @@
 			};
 			name = Release;
 		};
+		67856E2A2269DE45004C966B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HittaTechAssignmentUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Hitta.HittaTechAssignment.HittaTechAssignmentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HittaTechAssignment;
+			};
+			name = Debug;
+		};
+		67856E2B2269DE45004C966B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HittaTechAssignmentUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Hitta.HittaTechAssignment.HittaTechAssignmentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HittaTechAssignment;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -620,6 +736,15 @@
 			buildConfigurations = (
 				1B5467CE21B2F90E008FA7E2 /* Debug */,
 				1B5467CF21B2F90E008FA7E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67856E2C2269DE45004C966B /* Build configuration list for PBXNativeTarget "HittaTechAssignmentUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67856E2A2269DE45004C966B /* Debug */,
+				67856E2B2269DE45004C966B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
