@@ -361,6 +361,7 @@
 				TargetAttributes = {
 					1B5467BA21B2F90C008FA7E2 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1160;
 					};
 					67856E222269DE44004C966B = {
 						CreatedOnToolsVersion = 10.2;
@@ -654,7 +655,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Hitta.HittaTechAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -676,7 +677,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Hitta.HittaTechAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
